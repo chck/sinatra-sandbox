@@ -1,0 +1,9 @@
+.idea
+vendor/bundle
+/.bundle
+*~
+.project
+.DS_Store
+.secret
+*.swp
+.ruby-version
