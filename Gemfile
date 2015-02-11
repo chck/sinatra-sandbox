@@ -1,5 +1,18 @@
 source "https://rubygems.org"
+ruby '2.1.3'
 
-gem 'sinatra', '~> 1.4.4'
-gem 'activerecord', '~> 4.0.2'
-gem 'sqlite3', '~> 1.3.0'
+gem 'sinatra'
+gem 'activerecord'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'rake'
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'sinatra-reloader'
+  gem 'foreman'
+  gem 'pry'
+end
+
+group :production do
+  gem 'pg'
+end

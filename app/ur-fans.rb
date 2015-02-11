@@ -1,7 +1,12 @@
-require 'sinatra/base'
+require 'sinatra'
+require 'sinatra/reloader' if development?
+require 'active_record'
+require_relative 'models/follower'
+require 'pry'
 
-class UrFans < Sinatra::Base
-  get '/' do
-    erb :index
-  end
+get '/' do
+  Follower.create!(screen_name: 'chck', description: 'ohayounyugyo!')
+  @followers = Follower.all
+  # binding.pry
+  erb :index
 end

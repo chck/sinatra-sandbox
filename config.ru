@@ -1,3 +1,5 @@
-require './app/ur-fans'
+require File.dirname(__FILE__) + '/app/ur-fans'
 
-run UrFans
+use ActiveRecord::ConnectionAdapters::ConnectionManagement
+
+run Sinatra::Application
