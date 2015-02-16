@@ -13,15 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20150214073449) do
 
-  create_table "follows", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "followee",   null: false
+  create_table "follows", id: false, force: :cascade do |t|
+    t.integer  "follower_id", limit: 20, null: false
+    t.integer  "followee_id", limit: 20, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.text     "screen_name", null: false
+  create_table "users", id: false, force: :cascade do |t|
+    t.integer  "id",          limit: 20, null: false
+    t.text     "screen_name",            null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

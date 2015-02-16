@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_record'
 require_relative 'models/user'
+require_relative 'services/desc-follower'
 require 'pry'
 
 class UrFans < Sinatra::Base
@@ -13,7 +14,9 @@ class UrFans < Sinatra::Base
 
   post '/' do
     begin
-      User.create!(screen_name: params[:screen_name], description: 'ohayounyugyo!')
+      df = DescFollower.new
+      df.insert_db(params[:screen_name])
+      # User.create!(screen_name: params[:screen_name], description: 'ohayounyugyo!')
       p "success"
     rescue => e
       p e
