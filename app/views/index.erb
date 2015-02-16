@@ -6,9 +6,16 @@
 </head>
 <body>
 <h1>ur-fans!</h1>
+
+<form method="post">
+  <div class="form-group">
+    <input type="text" id="screen_name" name="screen_name" placeholder="twitter id"/><br/>
+  </div>
+  <button type="submit">Analyze!</button>
+</form>
 <ul>
-  <% @followers.each do |follower| %>
-      <li><%= follower.screen_name %>, <%= follower.description %></li>
+  <% @users.each do |user| %>
+      <li><%= user.screen_name %>, <%= user.description %></li>
   <% end %>
 </ul>
 </body>
