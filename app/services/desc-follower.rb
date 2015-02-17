@@ -22,7 +22,7 @@ class DescFollower
     users = []
     num   = 0
     get_twitter_client(num)
-    target_user_id = @client.user(twitter_id)
+    target_user = @client.user(twitter_id)
     begin
       follower_ids = @client.follower_ids(twitter_id).to_a
       loop_count   = (follower_ids.size - 1) / 100 + 1
@@ -40,17 +40,19 @@ class DescFollower
       puts "retry: #{num}"
       retry
     ensure
-      return target_user_id, users.flatten
+      return target_user, users.flatten
     end
   end
 
   def insert_db(twitter_id)
-    gf          = get_followers(twitter_id)
-    followee_id = gf[0].id
-    followers   = gf[1]
+    gf       = get_followers(twitter_id)
+    followee = gf[0]
+    User.create(id: followee.id, screen_name: followee.screen_name, description: followee.description)
+
+    followers = gf[1]
     followers.each do |follower|
       follower = User.create!(id: follower.id, screen_name: follower.screen_name, description: follower.description)
-      Follow.create!(follower_id: follower.id, followee_id: followee_id)
+      Follow.create(follower_id: follower.id, followee_id: followee.id)
     end
   end
 end

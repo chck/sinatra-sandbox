@@ -14,15 +14,13 @@ class UrFans < Sinatra::Base
 
   post '/' do
     begin
-      df = DescFollower.new
-      df.insert_db(params[:screen_name])
-      # User.create!(screen_name: params[:screen_name], description: 'ohayounyugyo!')
-      p "success"
+      # df = DescFollower.new
+      # df.insert_db(params[:screen_name])
     rescue => e
-      p e
-      #@users = e.record
+      # p e
     end
-    redirect '/'
-    # erb :index
+    @user  = User.find_by(screen_name: params[:screen_name])
+    @users = []
+    erb :index
   end
 end

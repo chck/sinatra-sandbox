@@ -13,6 +13,7 @@
   </div>
   <button type="submit">Analyze!</button>
 </form>
+<li><%= @user.screen_name %>, <%= @user.description %></li>
 <ul>
   <% @users.each do |user| %>
       <li><%= user.screen_name %>, <%= user.description %></li>

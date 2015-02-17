@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 20150214073449) do
     t.datetime "updated_at"
   end
 
-  create_table "users", id: false, force: :cascade do |t|
-    t.integer  "id",          limit: 20, null: false
-    t.text     "screen_name",            null: false
+  create_table "users", force: :cascade do |t|
+    t.text     "screen_name", null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["id"], name: "sqlite_autoindex_users_1", unique: true
 
 end

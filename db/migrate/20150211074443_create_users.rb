@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def change
-    create_table :users, id: false, primary_key: 'id' do |t|
-      t.integer :id, null: false, unique: true, limit: 20
+    create_table :users, id: false do |t|
+      t.column :id, 'BIGINT(20) PRIMARY KEY'
       t.text :screen_name, null: false, unique: true
       t.text :description
       t.timestamps
