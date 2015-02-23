@@ -13,9 +13,13 @@
   </div>
   <button type="submit">Analyze!</button>
 </form>
+<% if @user %>
+  <p><%= @user.screen_name %>,
+    <%= @user.description %></p>
+<% end %>
 <ul>
   <% @users.each do |user| %>
-      <li><%= user.screen_name %>, <%= user.description %></li>
+    <li><%= user.screen_name %>, <%= user.description %></li>
   <% end %>
 </ul>
 </body>

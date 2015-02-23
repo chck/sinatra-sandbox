@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_record'
 require_relative 'models/user'
-require_relative 'services/desc-follower'
+require_relative 'services/analyze-follower'
 require 'pry'
 
 class UrFans < Sinatra::Base
@@ -14,8 +14,8 @@ class UrFans < Sinatra::Base
 
   post '/' do
     begin
-      # df = DescFollower.new
-      # df.insert_db(params[:screen_name])
+      # af = AnalyzeFollower.new
+      # af.insert_db(params[:screen_name])
     rescue => e
       # p e
     end
