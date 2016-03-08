@@ -1,1 +1,1 @@
-# sinatra-test
+# sinatra-sandbox
